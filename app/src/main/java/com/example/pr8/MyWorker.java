@@ -23,7 +23,7 @@ import javax.net.ssl.HttpsURLConnection;
 
 public class MyWorker extends Worker {
 
-    class Answer {
+    static class Answer {
         public String fileSizeBytes;
         public String url;
         public Answer(){
@@ -52,10 +52,10 @@ public class MyWorker extends Worker {
 
             Scanner scanner = new Scanner(connection.getInputStream());
             Answer answer = gson.fromJson(scanner.nextLine(), Answer.class);
-            Log.d("FFF", answer.url);
 
             URL newurl = new URL(answer.url);
 
+            Log.d("FFF", newurl.toString());
             Data data = new Data.Builder().putString("key1", newurl.toString()).build();
 
             return Result.success(data);

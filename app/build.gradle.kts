@@ -30,8 +30,8 @@ android {
 
 dependencies {
 
-    implementation("com.google.code.gson:gson:2.8.7")
-    implementation("com.squareup.picasso:picasso:2.71828")
+    implementation("com.google.code.gson:gson:2.8.5")
+    implementation("com.squareup.picasso:picasso:2.8")
     implementation("androidx.work:work-runtime:2.9.0")
     implementation(libs.appcompat)
     implementation(libs.material)

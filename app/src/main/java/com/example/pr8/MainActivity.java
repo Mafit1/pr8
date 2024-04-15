@@ -31,12 +31,16 @@ public class MainActivity extends AppCompatActivity {
         OneTimeWorkRequest workRequest = new OneTimeWorkRequest.Builder(com.example.pr8.MyWorker.class).build();
         WorkManager.getInstance(this).enqueue(workRequest);
 
-        WorkManager.getInstance(this).
-                getWorkInfoByIdLiveData(workRequest.getId()).observe(this, new Observer<WorkInfo>(){
+        WorkManager.getInstance(this).getWorkInfoByIdLiveData(workRequest.getId()).observe(this, new Observer<WorkInfo>(){
                         @Override
                         public void onChanged(WorkInfo workInfo) {
                             String url = workInfo.getOutputData().getString("key1");
-                            Picasso.get().load(url).into(imageView);
+
+                            Log.d("RRR","Status="+workInfo.getState()+", url="+url);
+                       //     if(workInfo.getState().isFinished()) {
+                                 Picasso.get().load(url).into(imageView);
+                         //   }
+
                         }
                     }
                 );
